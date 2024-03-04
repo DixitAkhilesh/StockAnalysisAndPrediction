@@ -5,7 +5,6 @@ import numpy as np
 from sklearn.preprocessing import MinMaxScaler
 from keras.models import Sequential
 from keras.layers import LSTM, Dense
-from keras.models import load_model
 
 os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
