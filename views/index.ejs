@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>StockInfo</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="styles/styles.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        <script src="https://code.highcharts.com/stock/11.3.0/highstock.js"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Protest+Riot&display=swap" rel="stylesheet">
+
+
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    </head>
+    <body>
+        <div class="main">
+            <h1 style="text-align: center; font-weight: 400;">Stock Search</h1>
+            <form action="/" method="post" id="input-form">
+                <div class="form">
+                    <!-- First button to trigger form submission -->
+                    <button class="btn1" type="submit">
+                        <img src="/images/search-solid.svg" alt="" style="width: 20px; height: 15px;">
+                    </button>
+                    <% if(locals.profile) { %>
+                        <input type="text" name="stock_id" id="input" required placeholder="<%= profile.ticker %>" onkeyup="this.value = this.value.toUpperCase();" class="bold-placeholder">
+                    <% } else { %>
+                        <input type="text" name="stock_id" id="input" required placeholder="Enter Stock Ticker Symbol" onkeyup="this.value = this.value.toUpperCase();">
+                    <% } %>
+                    <button class="btn2" type="reset">
+                        <img src="/images/cross.png" alt="" style="width: 15px; height: 15px;">
+                    </button>
+                </div>
+            </form>
+            
+        </div>
+
+        <div class="data">
+            <div class="options">
+                <form action="/search" method="post" id="second-form">
+                    <button class="opts" name="value" value="profile" id="profile" >Company</button>
+                    <button class="opts" name="value" value="summary" id="summary" onclick="handleClick(this)">Stock Summary</button>
+                    <button class="opts" name="value" value="charts" id="charts" onclick="handleClick(this)">Charts</button>
+                    <button class="opts" name="value" value="news" id="news" onclick="handleClick(this)">Latest News</button>
+                    <button class="opts" name="value" value="predict" id="predict" onclick="handleClick(this)">Predict</button>
+                </form>
+            </div>
+            <div id="display">
+                

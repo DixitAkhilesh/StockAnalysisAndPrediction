@@ -1,0 +1,32 @@
+<%- include('index.ejs') %>
+        <% if (!locals.news || Object.keys(locals.news).length === 0){ %>
+            <%- include('e.ejs')%>
+        <% } else{%>
+            <script>
+                document.getElementById('<%=value%>').style.backgroundColor = "gray";
+            </script>
+            
+            <% for(var i=0;i<5;i++) {%>
+                <div class="card">
+                    <div class="img">
+                        <% if(news[i].image) {%>
+                            <img src="<%= news[i].image%>" alt="" style="height: 125px; width: 125px">
+                        <% } else{%>
+                            <p>&nbsp;</p>
+                        <% } %>
+                    </div>  
+                    <div class="text">
+                        <h3><%=news[i].headline%></h3> 
+                        <p><%=news[i].summary %> </p>
+                        <a href="<%= news[i].url%>">See Original Post</a>                   
+                    </div>
+                </div>
+            <% } %>
+        
+        <% } %>
+
+        </div>
+    </div>
+    
+    </body>   
+</html>

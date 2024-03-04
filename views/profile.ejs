@@ -1,0 +1,43 @@
+<%- include('index.ejs') %>
+    <% if (!locals.profile || Object.keys(locals.profile).length === 0) { %> 
+        <%- include('e.ejs')%>
+    <% } else{%>
+        <script>
+            document.getElementById('profile').style.backgroundColor = "gray";
+        </script>
+        <div class="logo-container">
+            <img src="<%= profile.logo %>" alt="<%= profile.name %> Logo" id="logo">
+        </div>
+    <table>
+        <tr>
+            <td>&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;&nbsp;</td>
+        </tr>
+        <tr>
+            <td style="text-align: right;"><b>Company Name&nbsp;&nbsp;&nbsp;</b></td>
+            <td style="text-align: left;"><%= profile.name %></td>
+        </tr>
+        <tr>
+            <td style="text-align: right;"><b>Stock Ticker Symbol&nbsp;&nbsp;&nbsp;</b></td>
+            <td style="text-align: left;"><%=profile.ticker %></td>
+        </tr>
+        <tr>
+            <td style="text-align: right;"><b>Stock Exchange Code&nbsp;&nbsp;&nbsp;</b></td>
+            <td style="text-align: left;"><%= profile.exchange %></td>
+        </tr>
+        <tr>
+            <td style="text-align: right;"><b>Company Start Date&nbsp;&nbsp;&nbsp;</b></td>
+            <td style="text-align: left;"><%= locals.ipo %></td>
+        </tr>
+        <tr>
+            <td style="text-align: right;"><b>Category&nbsp;&nbsp;&nbsp;</b></td>
+            <td style="text-align: left;"><%= profile.finnhubIndustry %></td>
+        </tr>
+    </table>
+    
+    <% } %>
+  
+            </div>
+        </div>
+    </body>
+</html>

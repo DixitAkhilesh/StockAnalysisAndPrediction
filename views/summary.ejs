@@ -1,0 +1,64 @@
+<%- include('index.ejs') %>
+            <% if (!locals.summary || Object.keys(locals.summary).length === 0) {%>
+                <%- include('e.ejs')%>
+            <% } else{%>
+                <script>
+                    document.getElementById('summary').style.backgroundColor = "gray";
+                </script>
+                <table>
+                    <tr>
+                        <td>&nbsp;&nbsp;&nbsp;</td>
+                        <td>&nbsp;&nbsp;&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right;"><b>Stock Ticker Symbol&nbsp;&nbsp;&nbsp;</b></td>
+                        <td style="text-align: left;"><%= symbol %></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right;"><b>Previous Closing Price&nbsp;&nbsp;&nbsp;</b></td>
+                        <td style="text-align: left;"><%=summary.pc %></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right;"><b>Opening Price&nbsp;&nbsp;&nbsp;</b></td>
+                        <td style="text-align: left;"><%= summary.o %></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right;"><b>High Price&nbsp;&nbsp;&nbsp;</b></td>
+                        <td style="text-align: left;"><%= summary.h %></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right;"><b>Low Price&nbsp;&nbsp;&nbsp;</b></td>
+                        <td style="text-align: left;"><%= summary.l %></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right;"><b>Closing Price&nbsp;&nbsp;&nbsp;</b></td>
+                        <td style="text-align: left;"><%= summary.c %></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right;"><b>Change&nbsp;&nbsp;&nbsp;</b></td>
+                        <td style="text-align: left;"><%= summary.d %> <%if(summary.d < 0){ %><img src="/images/RedArrowDown.png" alt="" style="height: 15px; width: 15px;"><%} else{ %><img src="/images/GreenArrowUp.png" alt="" style="height: 15px; width: 15px;"><% } %> </td>
+                    </tr><tr>
+                        <td style="text-align: right;"><b>Change Percentage&nbsp;&nbsp;&nbsp;</b></td>
+                        <td style="text-align: left;"><%= summary.dp %>% <%if(summary.dp < 0){ %><img src="/images/RedArrowDown.png" alt="" style="height: 15px; width: 15px;"><%} else{ %><img src="/images/GreenArrowUp.png" alt="" style="height: 15px; width: 15px;"><% } %> </td>
+                    </tr>
+                </table>
+                <div class="display-1">
+                    <p style="color: red; font-weight: 400;">&nbsp;Stong Sell</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                    <div style="background-color: #bf1029; padding-left: 10px; padding-right: 10px; color: white;"><%= recommendations.strongSell %></div>
+                    <div style="background-color: #de1a24; padding-left: 10px; padding-right: 10px; color: white;"><%= recommendations.sell %></div>
+                    <div style="background-color: #759116; padding-left: 10px; padding-right: 10px; color: white;"><%= recommendations.hold %></div>
+                    <div style="background-color: #3f8f29; padding-left: 10px; padding-right: 10px; color: white;"><%= recommendations.buy %></div>
+                    <div style="background-color: #056517; padding-left: 10px; padding-right: 10px; color: white;"><%= recommendations.strongBuy %></div>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                    <p style="color: green; font-weight: 400;">Strong Buy&nbsp;</p>
+                </div>
+
+            
+                <% } %>
+
+            </div>
+        </div>
+        
+    </body> 
+</html>

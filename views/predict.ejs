@@ -1,0 +1,50 @@
+<%- include('index.ejs') %>
+    <% if (!locals.pred || Object.keys(locals.pred).length === 0) {%>
+        <%- include('e.ejs')%>
+    <% } else{%>
+            <script>
+                document.getElementById('predict').style.backgroundColor = "gray";
+            </script>
+            <table class="table" style="text-align: left;">
+                <tr>
+                    <td>
+                        Date
+                    </td>
+                    <td>
+                        Value
+                    </td>
+                </tr>
+                <% let i = 0, day=1;
+                    while(i<7) {
+                    // Increment the date by one day
+                    var nextDay = new Date(date.getTime() + day * 24 * 60 * 60 * 1000);
+                    
+                    // Check if the next day is a Saturday or Sunday
+                    if (nextDay.getDay() === 0 || nextDay.getDay() === 6) {
+                        // If it's a weekend, skip this day
+                        day++;
+                        continue;
+                    }
+                
+                    // Render the date
+                %>
+                    <tr>
+                        <td>
+                            <%= nextDay.toDateString() %>
+                        </td>
+                        <td>
+                            <%=pred[i] %>
+                        </td>
+                    </tr>
+                <% day++;i++;
+                    } %>
+                
+            </table>
+            <p class="disclaimer"><strong>Disclaimer:</strong> <br> Predictive analysis data provided here is not financial advice and may not accurately reflect current stock values.<br><br> Users are encouraged to conduct additional research or consult a financial advisor before making investment decisions based on this information.</p>
+        </div>
+    </div>
+    
+    <% } %>
+    
+    </body>  
+</html>
